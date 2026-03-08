@@ -14,6 +14,7 @@ int main() {
     switch (option) {
       /* Start Game */
     case 1:
+      game_start();
       break;
       /* Add a question (no data persistance) */
     case 2:
@@ -28,6 +29,7 @@ int main() {
       /* Exit */
     case 5:
       printf("Exiting the program...\n");
+      // game_clean();
       loop = false;
       break;
     default:
