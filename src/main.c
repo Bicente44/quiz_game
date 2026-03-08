@@ -15,6 +15,8 @@ int main() {
   int option = -1;
   // TODO Ask for login, or play as guest and optionally sign in later
   while (loop) {
+    printf(
+        "Menu options:\n1. Start quiz\n2. ???\n3. ???\n4. Help\n5. Exit\n> ");
     if ((option = option_input(n_menu_options)) <= 0)
       continue;
 

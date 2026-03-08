@@ -5,6 +5,8 @@ int difficulty = -1; /* 1, 2, 3  */
 Question *question_list;
 
 void game_start() {
+  // TODO Print difficulty menu
+  printf("Difficulty options:\n1. Easy\n2. Medium\n3. Hard\n> ");
   while ((difficulty = option_input(3)) == -1)
     ;
   question_list = create_questions(question_list);
@@ -66,7 +68,7 @@ void play_loop(Question *question_list) {
   n_questions = get_n_questions(difficulty);
 
   for (int i = 0; i < n_questions; i++) {
-    printf("Question %d / %d\n", i, n_questions);
+    printf("Question %d / %d\n", i + 1, n_questions);
     if ((n_questions - i) < 1) {
       printf("Here is the final Question!\n");
     } else {
@@ -92,6 +94,7 @@ void play_loop(Question *question_list) {
     }
 
     bool loop = true;
+    printf("Enter a valid awnser between 1 - 4:\n> ");
     while (loop) {
       if ((answer = option_input(4)) <= 0) {
         continue;
@@ -102,14 +105,15 @@ void play_loop(Question *question_list) {
 
     if (strcmp(display_options[answer - 1], question_list[i].correct_a) != 0) {
       printf("Thats incorrect!\n");
+      printf("The correct answer is: '%s'\n", question_list[i].correct_a);
       incorrect++;
     } else {
       printf("Thats correct!\n");
       correct++;
     }
-    printf("You finished the game!\nYou got %d correct and %d incorrect\n",
-           correct, incorrect);
   }
+  printf("You finished the game!\nYou got %d correct and %d incorrect\n",
+         correct, incorrect);
   // TODO: once reached here it should mean win, (has enough lives at the
   // end)
 }
