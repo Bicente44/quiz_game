@@ -25,6 +25,8 @@ typedef struct {
   char incorrect_a[3][A_STRING_LENGTH]; /* Array of 3 strings */
 } Question;
 
+Question *question_list;
+
 void game_start();
 
 Question *create_questions(Question *question_list);

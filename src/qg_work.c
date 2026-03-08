@@ -2,7 +2,6 @@
 #include "qg_utils.h"
 
 int difficulty = -1; /* 1, 2, 3  */
-Question *question_list;
 
 void game_start() {
   while ((difficulty = option_input(3)) == -1)

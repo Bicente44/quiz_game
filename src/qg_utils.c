@@ -1,5 +1,8 @@
 #include "qg_utils.h"
 #include "qg_work.h"
+#include "sqlite3.h"
+
+sqlite3 *db;
 
 int option_input(int n) { // 'n' is number of questions
   char str_option[3];
@@ -34,8 +37,54 @@ int get_n_questions(int difficulty) {
   return n_questions;
 }
 
-void shuffle_questions() {}
-int game_clean() { return 0; }
+int init_db() {
+  char *err_msg = 0;
+  int return_code;
+
+  return_code = sqlite3_open(DB_NAME, &db);
+
+  if (return_code != SQLITE_OK) {
+    fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
+    sqlite3_close(db);
+    return 1;
+  } else {
+    fprintf(stderr, "Database opened successfully\n");
+  }
+
+  const char *sql = "CREATE TABLE IF NOT EXISTS USERS("
+                    "ID INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,"
+                    "NAME CHAR(25) NOT NULL,"
+                    "WINS INT NOT NULL,"
+                    "LOSSES INT NOT NULL);"
+
+                    "CREATE TABLE IF NOT EXISTS QUESTIONS("
+                    "Q_ID INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,"
+                    "QUESTION CHAR(50) NOT NULL,"
+                    "Q_DIFFICULTY INT,"
+                    "CORRECT_A CHAR(20) NOT NULL,"
+                    "INCORRECT_A1 CHAR(20) NOT NULL,"
+                    "INCORRECT_A2 CHAR(20) NOT NULL,"
+                    "INCORRECT_A3 CHAR(20) NOT NULL );";
+
+  return_code = sqlite3_exec(db, sql, 0, 0, &err_msg);
+  if (return_code != SQLITE_OK) {
+    fprintf(stderr, "SQL error: %s\n", err_msg);
+    sqlite3_free(err_msg);
+    sqlite3_close(db);
+    return return_code;
+  }
+  fprintf(stdout, "Table created successfully\n");
+
+  return 0;
+}
+
+int game_clean() {
+
+  free(question_list);
+  sqlite3_close(db);
+
+  return 0;
+}
 
 /* DEBUG ? */
 

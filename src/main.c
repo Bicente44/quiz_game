@@ -4,6 +4,7 @@
 const int n_menu_options = 5;
 
 int main() {
+  // init_db();
   bool loop = true;
   int option = -1;
   // TODO Ask for login, or play as guest and optionally sign in later

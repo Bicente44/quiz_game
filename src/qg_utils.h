@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define DB_NAME "quiz_game.db"
+
 int option_input(int n);
 
 int get_n_questions(int difficulty);
+
+int init_db();
 
 void shuffle_questions();
 
