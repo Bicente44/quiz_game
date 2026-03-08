@@ -1,44 +1,33 @@
+#include "qg_utils.h"
 #include "qg_work.h"
 
-int option_input() {
-  char str_option[3];
-  int int_option = -1;
-  printf("Please enter a valid integer between 1 - 4:\n>");
-  if (fgets(str_option, sizeof(str_option), stdin) != NULL) {
-    if ((int_option = atoi(str_option)) >= 1 && int_option <= 4) {
-      return int_option;
-    } else {
-      printf("Number is not witin 1-4 try again\n");
-      return -1;
-    }
-  } else {
-    printf("input read failure, NULL error\n");
-    return -1;
-  }
-}
+const int n_menu_options = 5;
 
 int main() {
   bool loop = true;
   int option = -1;
-
+  // TODO Ask for login, or play as guest and optionally sign in later
   while (loop) {
-    if ((option = option_input()) <= 0)
+    if ((option = option_input(n_menu_options)) <= 0)
       continue;
 
     switch (option) {
       /* Start Game */
     case 1:
       break;
-      /* Edit questions */
+      /* Add a question (no data persistance) */
     case 2:
+      break;
+      /* Edit questions */
+    case 3:
       /* check if not admin, if true then print cant do that and continue */
       break;
       /* Help */
-    case 3:
+    case 4:
       break;
       /* Exit */
-    case 4:
-      printf("Exiting the program...");
+    case 5:
+      printf("Exiting the program...\n");
       loop = false;
       break;
     default:
