@@ -52,19 +52,19 @@ int init_db() {
   }
 
   const char *sql = "CREATE TABLE IF NOT EXISTS USERS("
-                    "ID INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,"
+                    "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                     "NAME CHAR(25) NOT NULL,"
                     "WINS INT NOT NULL,"
                     "LOSSES INT NOT NULL);"
 
                     "CREATE TABLE IF NOT EXISTS QUESTIONS("
-                    "Q_ID INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,"
+                    "Q_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
                     "QUESTION CHAR(50) NOT NULL,"
                     "Q_DIFFICULTY INT,"
                     "CORRECT_A CHAR(20) NOT NULL,"
                     "INCORRECT_A1 CHAR(20) NOT NULL,"
                     "INCORRECT_A2 CHAR(20) NOT NULL,"
-                    "INCORRECT_A3 CHAR(20) NOT NULL );";
+                    "INCORRECT_A3 CHAR(20) NOT NULL);";
 
   return_code = sqlite3_exec(db, sql, 0, 0, &err_msg);
   if (return_code != SQLITE_OK) {
@@ -73,8 +73,73 @@ int init_db() {
     sqlite3_close(db);
     return return_code;
   }
-  fprintf(stdout, "Table created successfully\n");
+  return 0;
+}
 
+int is_db_empty() {
+  sqlite3_stmt *result;
+  int count = 0;
+  const char *sql = "SELECT COUNT(*) FROM QUESTIONS;";
+
+  if (sqlite3_prepare_v2(db, sql, -1, &result, NULL) != SQLITE_OK) {
+    fprintf(stderr, "Failed to prepare: %s\n", sqlite3_errmsg(db));
+    return -1;
+  }
+  if (sqlite3_step(result) == SQLITE_ROW) {
+    count = sqlite3_column_int(result, 0);
+  }
+  sqlite3_finalize(result);
+
+  return (count == 0);
+}
+
+int populate_db() {
+  FILE *fptr;
+  char buffer[1024];
+  char *token;
+  Question db_q;
+
+  fptr = fopen("data/questions.txt", "r");
+  if (fptr == NULL) {
+    printf("Cant open data/questions.txt, aborting..\n");
+    return -1;
+  }
+  while (fgets(buffer, sizeof(buffer), fptr) != NULL) {
+
+    buffer[strcspn(buffer, "\r\n")] = 0;
+    token = strtok(buffer, ",");
+
+    if (token == NULL)
+      continue;
+    db_q.q_difficulty = atoi(token);
+
+    token = strtok(NULL, ",");
+    if (token != NULL)
+      strcpy(db_q.question, token + 1);
+
+    token = strtok(NULL, ",");
+    if (token != NULL)
+      strcpy(db_q.correct_a, token + 1);
+
+    for (int i = 0; i < 3; i++) {
+      token = strtok(NULL, ",");
+      if (token != NULL)
+        strcpy(db_q.incorrect_a[i], token + 1);
+    }
+    char *sql = sqlite3_mprintf(
+        "INSERT INTO QUESTIONS (Q_DIFFICULTY, QUESTION, "
+        "CORRECT_A, INCORRECT_A1, INCORRECT_A2, INCORRECT_A3) "
+        "VALUES (%d, %Q, %Q, %Q, %Q, %Q);",
+        db_q.q_difficulty, db_q.question, db_q.correct_a, db_q.incorrect_a[0],
+        db_q.incorrect_a[1], db_q.incorrect_a[2]);
+
+    if (sqlite3_exec(db, sql, NULL, NULL, NULL) != SQLITE_OK) {
+      fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
+    }
+    sqlite3_free(sql);
+  }
+
+  fclose(fptr);
   return 0;
 }
 

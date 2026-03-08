@@ -4,7 +4,13 @@
 const int n_menu_options = 5;
 
 int main() {
-  // init_db();
+
+  init_db();
+  if (is_db_empty()) {
+    printf("Database is empty?? Populating from questions.txt\n");
+    populate_db();
+  }
+
   bool loop = true;
   int option = -1;
   // TODO Ask for login, or play as guest and optionally sign in later

@@ -10,6 +10,10 @@ int get_n_questions(int difficulty);
 
 int init_db();
 
+int is_db_empty();
+
+int populate_db();
+
 void shuffle_questions();
 
 int game_clean();
