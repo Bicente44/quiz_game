@@ -1,6 +1,4 @@
 #include "qg_utils.h"
-#include "qg_work.h"
-#include "sqlite3.h"
 
 sqlite3 *db;
 
@@ -104,26 +102,31 @@ int populate_db() {
     return -1;
   }
   while (fgets(buffer, sizeof(buffer), fptr) != NULL) {
-
     buffer[strcspn(buffer, "\r\n")] = 0;
-    token = strtok(buffer, ",");
 
+    token = strtok(buffer, ",");
     if (token == NULL)
       continue;
     db_q.q_difficulty = atoi(token);
 
     token = strtok(NULL, ",");
-    if (token != NULL)
-      strcpy(db_q.question, token + 1);
+    if (token != NULL) {
+      strncpy(db_q.question, token + 1, Q_STRING_LENGTH - 1);
+      db_q.question[Q_STRING_LENGTH - 1] = '\0';
+    }
 
     token = strtok(NULL, ",");
-    if (token != NULL)
-      strcpy(db_q.correct_a, token + 1);
+    if (token != NULL) {
+      strncpy(db_q.correct_a, token + 1, A_STRING_LENGTH - 1);
+      db_q.correct_a[A_STRING_LENGTH - 1] = '\0';
+    }
 
     for (int i = 0; i < 3; i++) {
       token = strtok(NULL, ",");
-      if (token != NULL)
-        strcpy(db_q.incorrect_a[i], token + 1);
+      if (token != NULL) {
+        strncpy(db_q.incorrect_a[i], token + 1, A_STRING_LENGTH - 1);
+        db_q.incorrect_a[i][A_STRING_LENGTH - 1] = '\0';
+      }
     }
     char *sql = sqlite3_mprintf(
         "INSERT INTO QUESTIONS (Q_DIFFICULTY, QUESTION, "
@@ -140,6 +143,25 @@ int populate_db() {
 
   fclose(fptr);
   return 0;
+}
+
+Question *shuffle_questions(Question *question_list, int difficulty) {
+  Question *shuffled_questions;
+  int n_questions = 0;
+  // Implement the fih shuffle method
+  n_questions = get_n_questions(difficulty);
+  shuffled_questions = question_list;
+
+  for (int j = n_questions - 1; j > 0; j--) {
+    int k = rand() % (j + 1);
+
+    Question temp;
+    temp = shuffled_questions[j];
+    shuffled_questions[j] = shuffled_questions[k];
+    shuffled_questions[k] = temp;
+  }
+
+  return shuffled_questions;
 }
 
 int game_clean() {
@@ -166,4 +188,9 @@ void print_list_details(int n_questions, int difficulty,
     }
     printf("\n");
   }
+}
+
+void print_help() {
+  //
+  //
 }

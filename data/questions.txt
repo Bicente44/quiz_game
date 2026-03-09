@@ -1,6 +1,6 @@
-1, What is the capital of france?, Paris, Berlin, London, Rome
+1, What is the capital of France?, Paris, Berlin, London, Rome
 
-1, What is the largest planet ?, Jupiter, Mars, Venus, Saturn
+1, What is the largest planet?, Jupiter, Mars, Venus, Saturn
 
 1, Which ocean is the largest?, Pacific, Atlantic, Indian, Arctic
 
@@ -8,4 +8,184 @@
 
 1, How many continents are there on Earth?, 7, 5, 6, 8
 
-1, Who painted the Mona Lisa?, Leonardo da Vinci, Vincent van Gogh, Pablo Picasso, Claude Monet
+2, Who painted the Mona Lisa?, Leonardo da Vinci, Vincent van Gogh, Pablo Picasso, Claude Monet
+
+1, What is the name of the star that the Earth orbits?, The Sun, Mars, The Moon, Venus
+
+1, Which animal is known as the King of the Jungle?, Lion, Tiger, Elephant, Gorilla
+
+2, How many days are in a leap year?, 366, 365, 364, 360
+
+2, What is the primary color of an emerald?, Green, Red, Blue, Yellow
+
+2, In which country can you find the Great Pyramid of Giza?, Egypt, Mexico, Italy, China
+
+3, What is the smallest prime number?, 2, 1, 3, 5
+
+1, Which bird is often used as a symbol of peace?, Dove, Eagle, Raven, Penguin
+
+2, What is the hardest natural substance on Earth?, Diamond, Gold, Iron, Granite
+
+1, How many legs does a spider have?, 8, 6, 10, 4
+
+1, What do bees collect from flowers to make honey?, Nectar, Pollen, Water, Sap
+
+1, Which planet is known as the Red Planet?, Mars, Jupiter, Venus, Mercury
+
+1, What is the name of the toy cowboy in the movie Toy Story?, Woody, Buzz, Rex, Slinky
+
+1, How many colors are in a rainbow?, 7, 5, 8, 10
+
+1, What is the capital city of Japan?, Tokyo, Seoul, Beijing, Bangkok
+
+1, Which fruit is traditionally given to teachers?, Apple, Orange, Banana, Pear
+
+2, What is the freezing point of water in Celsius?, 0 degrees, 32 degrees, 100 degrees, -10 degrees
+
+2, Who was the first person to step on the moon?, Neil Armstrong, Buzz Aldrin, Yuri Gagarin, Elon Musk
+
+1, What is the largest land animal?, African Elephant, Giraffe, Hippopotamus, Rhinoceros
+
+1, Which shape has three sides?, Triangle, Square, Pentagon, Circle
+
+1, What do you call a baby cat?, Kitten, Puppy, Calf, Cub
+
+1, What is the name of the fairy in Peter Pan?, Tinker Bell, Cinderella, Belle, Ariel
+
+1, Which season comes after winter?, Spring, Summer, Fall, Autumn
+
+1, What is the main ingredient in an omelet?, Eggs, Flour, Sugar, Milk
+
+1, In which city is the Eiffel Tower located?, Paris, New York, London, Sydney
+
+1, How many minutes are in one hour?, 60, 50, 100, 24
+
+2, Which gas do humans need to breathe to stay alive?, Oxygen, Carbon Dioxide, Nitrogen, Helium
+
+1, What is the opposite of the word "hot"?, Cold, Warm, Fast, Big
+
+1, How many states are there in the United States?, 50, 48, 52, 13
+
+1, Which instrument has black and white keys?, Piano, Guitar, Flute, Drum
+
+1, What is the name of the long-necked animal?, Giraffe, Zebra, Camel, Kangaroo
+
+2, Which gas makes up the majority of Earth's atmosphere?, Nitrogen, Oxygen, Argon, Carbon Dioxide
+
+2, What is the capital of Australia?, Canberra, Sydney, Melbourne, Perth
+
+2, Which planet is the hottest in our solar system?, Venus, Mercury, Mars, Jupiter
+
+2, How many bones are in the adult human body?, 206, 204, 212, 198
+
+2, Who wrote the play "Romeo and Juliet"?, William Shakespeare, Charles Dickens, Mark Twain, Jane Austen
+
+2, What is the currency used in the United Kingdom?, Pound Sterling, Euro, Dollar, Yen
+
+2, Which country gifted the Statue of Liberty to the USA?, France, England, Germany, Italy
+
+2, What is the largest organ of the human body?, Skin, Liver, Lungs, Heart
+
+2, Which element has the chemical symbol 'Au'?, Gold, Silver, Aluminum, Copper
+
+2, What year did World War II end?, 1945, 1918, 1939, 1950
+
+2, In which sport would you use a "shuttlecock"?, Badminton, Tennis, Squash, Golf
+
+2, What is the longest river in the world?, Nile, Amazon, Mississippi, Yangtze
+
+2, Who is known as the "Father of Computers"?, Charles Babbage, Alan Turing, Bill Gates, Steve Jobs
+
+2, What is the name of the process by which plants make food?, Photosynthesis, Respiration, Evaporation, Digestion
+
+2, Which vitamin is produced when the skin is exposed to sunlight?, Vitamin D, Vitamin C, Vitamin A, Vitamin B12
+
+2, How many players are on a standard soccer team on the field?, 11, 10, 12, 9
+
+2, What is the capital of Canada?, Ottawa, Toronto, Vancouver, Montreal
+
+2, Which mythological figure flew too close to the sun?, Icarus, Hercules, Achilles, Zeus
+
+2, What is the square root of 144?, 12, 14, 11, 16
+
+2, Which desert is the largest in the world?, Antarctic Desert, Sahara, Gobi, Kalahari
+
+3, What is the capital city of Kazakhstan?, Astana, Almaty, Tashkent, Baku
+
+3, Which physicist developed the theory of general relativity?, Albert Einstein, Isaac Newton, Niels Bohr, Richard Feynman
+
+3, What is the most abundant metal in the Earth's crust?, Aluminum, Iron, Magnesium, Gold
+
+3, In what year did the French Revolution begin?, 1789, 1776, 1812, 1848
+
+3, What is the chemical symbol for Tungsten?, W, T, Tu, Tg
+
+3, Who was the first woman to win a Nobel Prize?, Marie Curie, Mother Teresa, Rosalind Franklin, Ada Lovelace
+
+3, Which country was formerly known as Ceylon?, Sri Lanka, Thailand, Myanmar, Vietnam
+
+3, What is the smallest country in the world by land area?, Vatican City, Monaco, Nauru, San Marino
+
+3, What is the functional unit of the kidney?, Nephron, Neuron, Alveoli, Capillary
+
+3, Who composed the "Moonlight Sonata"?, Ludwig van Beethoven, Wolfgang Amadeus Mozart, Johann Sebastian Bach, Frederic Chopin
+
+3, What is the half-life of Carbon-14?, 5730 years, 1200 years, 10000 years, 4500 years
+
+3, Which philosopher wrote "Thus Spoke Zarathustra"?, Friedrich Nietzsche, Immanuel Kant, Jean-Paul Sartre, Socrates
+
+3, What is the capital of Iceland?, Reykjavik, Oslo, Helsinki, Copenhagen
+
+3, In economics, what does "GDP" stand for?, Gross Domestic Product, General Deposit Profit, Global Debt Percent, Government Data Policy
+
+3, What is the name of the first artificial satellite launched into space?, Sputnik 1, Explorer 1, Vostok 1, Apollo 11
+
+3, Which bone is the longest in the human body?, Femur, Tibia, Humerus, Fibula
+
+3, Who is the author of "The Great Gatsby"?, F. Scott Fitzgerald, Ernest Hemingway, William Faulkner, John Steinbeck
+
+3, What is the deepest point in the Earth's oceans?, Mariana Trench, Tonga Trench, Java Trench, Philippine Trench
+
+3, Which element is found in all organic compounds?, Carbon, Nitrogen, Oxygen, Hydrogen
+
+3, What is the speed of light in a vacuum?, 299792 km/s, 150000 km/s, 450000 km/s, 100000 km/s
+
+3, Which city hosted the first modern Olympic Games in 1896?, Athens, Rome, Paris, London
+
+3, What is the world's largest island?, Greenland, Australia, New Guinea, Borneo
+
+3, Which battle is considered the turning point of the American Civil War?, Gettysburg, Antietam, Bull Run, Shiloh
+
+3, What is the rarest blood type in humans?, AB Negative, O Positive, B Negative, A Negative
+
+3, Who painted "The Persistence of Memory"?, Salvador Dali, Rene Magritte, Frida Kahlo, Andy Warhol
+
+3, What is the capital of Nigeria?, Abuja, Lagos, Kano, Ibadan
+
+3, Which planet has the shortest day in our solar system?, Jupiter, Saturn, Earth, Neptune
+
+3, What is the primary gas found in the atmosphere of Venus?, Carbon Dioxide, Nitrogen, Oxygen, Methane
+
+3, In which year did the Titanic sink?, 1912, 1905, 1920, 1898
+
+3, What is the value of the mathematical constant 'e'?, 2.718, 3.141, 1.618, 1.414
+
+3, Which African country was the first to gain independence from colonial rule?, Ghana, Nigeria, Kenya, Egypt
+
+3, What is the main protein found in hair and nails?, Keratin, Collagen, Elastin, Fibrin
+
+3, Who was the first Emperor of Rome?, Augustus, Julius Caesar, Nero, Caligula
+
+3, What is the capital of Turkey?, Ankara, Istanbul, Izmir, Antalya
+
+3, Which programming language was created by Guido van Rossum?, Python, Java, C++, Ruby
+
+3, What is the largest moon of Saturn?, Titan, Europa, Ganymede, Io
+
+3, In which Shakespearean play would you find the character Shylock?, The Merchant of Venice, Hamlet, Macbeth, Othello
+
+3, What is the unit of electrical resistance?, Ohm, Volt, Watt, Ampere
+
+3, Which treaty ended World War I?, Treaty of Versailles, Treaty of Paris, Treaty of Ghent, Treaty of Utrecht
+
+3, What is the study of mushrooms called?, Mycology, Botany, Entomology, Phycology

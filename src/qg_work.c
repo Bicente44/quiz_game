@@ -5,56 +5,61 @@ int difficulty = -1; /* 1, 2, 3  */
 Question *question_list;
 
 void game_start() {
-  // TODO Print difficulty menu
   printf("Difficulty options:\n1. Easy\n2. Medium\n3. Hard\n> ");
   while ((difficulty = option_input(3)) == -1)
     ;
   question_list = create_questions(question_list);
-
+  if (!question_list) {
+    printf("Failed to load questions, aborting...\n");
+    return;
+  }
+  shuffle_questions(question_list, difficulty);
   play_loop(question_list);
 }
 
 Question *create_questions(Question *question_list) {
   int n_questions = 0;
   n_questions = get_n_questions(difficulty);
+  if (question_list != NULL) {
+    free(question_list);
+    question_list = NULL;
+  }
   question_list = malloc(sizeof(Question) * QUESTION_LIST_MAX);
+  if (!question_list)
+    return NULL;
+  sqlite3_stmt *stmt;
+  int i = 0;
 
-  // TEMP hardcoded questions:
-  question_list[0] = (Question){1,
-                                "What is the capital of france?",
-                                "Paris",
-                                {"Berlin", "London", "Rome"}};
+  const char *sql = "SELECT * FROM QUESTIONS WHERE Q_DIFFICULTY = ? ORDER BY "
+                    "RANDOM() LIMIT ?;";
+  if (sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) != SQLITE_OK) {
+    free(question_list);
+    return NULL;
+  }
+  sqlite3_bind_int(stmt, 1, difficulty);
+  sqlite3_bind_int(stmt, 2, get_n_questions(difficulty));
 
-  question_list[1] = (Question){1,
-                                "What is the largest planet ?",
-                                "Jupiter",
-                                {"Mars", "Venus", "Saturn"}};
+  while (sqlite3_step(stmt) == SQLITE_ROW && i < n_questions) {
+    strncpy(question_list[i].question, (char *)sqlite3_column_text(stmt, 1),
+            Q_STRING_LENGTH - 1);
+    question_list[i].question[Q_STRING_LENGTH - 1] = '\0';
 
-  question_list[2] = (Question){1,
-                                "Which ocean is the largest?",
-                                "Pacific",
-                                {"Atlantic", "Indian", "Arctic"}};
+    question_list[i].q_difficulty = sqlite3_column_int(stmt, 2);
 
-  question_list[3] = (Question){1,
-                                "What is the chemical symbol for water?",
-                                "H2O",
-                                {"CO2", "O2", "NaCl"}};
+    strncpy(question_list[i].correct_a, (char *)sqlite3_column_text(stmt, 3),
+            A_STRING_LENGTH - 1);
+    question_list[i].correct_a[A_STRING_LENGTH - 1] = '\0';
 
-  question_list[4] = (Question){
-      1, "How many continents are there on Earth?", "7", {"5", "6", "8"}};
-
-  question_list[5] =
-      (Question){1,
-                 "Who painted the Mona Lisa?",
-                 "Leonardo da Vinci",
-                 {"Vincent van Gogh", "Pablo Picasso", "Claude Monet"}};
-
-  // TODO
-  // - Parse the ../data/questions.txt OR database (SqlLite)
-  // - For each question, populate and validate a Question struct array index
-  // - Check if n_questions > sizeof(list), if so theres a problem. Right now
-  //   its fine(testing)
-  // - Shuffle list
+    for (int j = 0; j < 3; j++) {
+      const char *inc = (const char *)sqlite3_column_text(stmt, 4 + j);
+      if (inc) {
+        strncpy(question_list[i].incorrect_a[j], inc, A_STRING_LENGTH - 1);
+        question_list[i].incorrect_a[j][A_STRING_LENGTH - 1] = '\0';
+      }
+    }
+    i++;
+  }
+  sqlite3_finalize(stmt);
   return question_list;
 }
 

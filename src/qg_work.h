@@ -1,6 +1,8 @@
+#ifndef QG_UTILS_H
+#define QG_UTILS_H
 
-#define Q_STRING_LENGTH 50
-#define A_STRING_LENGTH 20
+#define Q_STRING_LENGTH 60
+#define A_STRING_LENGTH 30
 /* N of questions asked for each difficulty */
 #define N_EASY_QUESTIONS 5
 #define N_MED_QUESTIONS 10
@@ -32,3 +34,5 @@ void game_start();
 Question *create_questions(Question *question_list);
 
 void play_loop(Question *question_list);
+
+#endif

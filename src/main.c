@@ -1,9 +1,10 @@
 #include "qg_utils.h"
 #include "qg_work.h"
 
-const int n_menu_options = 5;
+const int n_menu_options = 4;
 
 int main() {
+  srand(time(NULL));
 
   init_db();
   if (is_db_empty()) {
@@ -15,8 +16,9 @@ int main() {
   int option = -1;
   // TODO Ask for login, or play as guest and optionally sign in later
   while (loop) {
-    printf(
-        "Menu options:\n1. Start quiz\n2. ???\n3. ???\n4. Help\n5. Exit\n> ");
+    printf("Menu options:\n1. Start quiz\n2. Login/Logout\n3. Help\n4. "
+           "Exit\n> ");
+    // IF logged in: printf("Playing as %s", user.name);
     if ((option = option_input(n_menu_options)) <= 0)
       continue;
 
@@ -25,20 +27,19 @@ int main() {
     case 1:
       game_start();
       break;
-      /* Add a question (no data persistance) */
+      /* Login/Logout */
     case 2:
-      break;
-      /* Edit questions */
-    case 3:
-      /* check if not admin, if true then print cant do that and continue */
+      // TODO call login page
+      // TODO if logged in, logout
       break;
       /* Help */
-    case 4:
+    case 3:
+      print_help();
       break;
       /* Exit */
-    case 5:
+    case 4:
       printf("Exiting the program...\n");
-      // game_clean();
+      game_clean();
       loop = false;
       break;
     default:
